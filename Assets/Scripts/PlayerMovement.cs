@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -33,9 +34,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            chargeShot += 1250 * Time.deltaTime;
+            chargeShot += 800 * Time.deltaTime;
         }
-        if (Input.GetKeyUp(KeyCode.UpArrow))
+        if (Input.GetKeyUp(KeyCode.UpArrow)|| chargeShot >= 600)
         {
             GameObject clone;
             playerPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);

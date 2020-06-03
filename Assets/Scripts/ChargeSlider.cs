@@ -17,5 +17,6 @@ public class ChargeSlider : MonoBehaviour
     void Update()
     {
         chargeSlider.value = charger.chargeShot;
+        chargeSlider.maxValue = 600.0f;
     }
 }
