@@ -29,17 +29,20 @@ public class shot : MonoBehaviour
         if (shouldDie)
         {
             timer += Time.deltaTime;
-            if (timer >= 0.05f)
+            if (timer >= 0.02f)
             {
                 Destroy(gameObject);
             }
             
         }
         shotPosition = this.transform.position;
+
         timeToDie -= Time.deltaTime;
+
         rb.transform.localScale = scaleCoeff(timeToDie);
         if (rb.transform.localScale.magnitude <= 0.2f)
         {
+            
             shouldDie = true;
             shotPosition.z = 1.0f;
             this.transform.position = shotPosition;
@@ -48,18 +51,6 @@ public class shot : MonoBehaviour
         }
         
     }
-
-
-    bool moving(float previousy)
-    {
-        float current = rb.position.y;
-        if ( previousy > current)
-        {
-            return true;
-        }
-        return false;
-    }
-
 
 
 

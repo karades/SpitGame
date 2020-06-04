@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
+    public Score score;
+    [SerializeField]
+    float points;
     // Start is called before the first frame update
     void Start()
     {
 
+        score = GameObject.Find("Score").GetComponent<Score>();
     }
 
     // Update is called once per frame
@@ -33,14 +37,17 @@ public class Enemy : MonoBehaviour
         if (isUnderneath)
         {
             Debug.Log("HOORAY!");
+            score.addPoints(points); //add points
             Destroy(this.gameObject);
         }
         else
         {
-            Debug.Log("OOPS!");
         }
     }
-
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
     public void getHit()
     {
 
